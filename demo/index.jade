@@ -1,0 +1,25 @@
+doctype html
+html
+    head
+        meta(charset="utf-8")
+        title jQuery plugin Demo
+        link(rel="stylesheet",type="text/css",href="css/bootstrap.min.css")
+        script(type="text/javascript",src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js")
+        each item in plugin
+            script(type="text/javascript",src="src/#{item.path}")
+    body
+        div.container
+            mixin panel(item)
+                div.panel.panel-primary
+                    div.panel-heading
+                        strong= item.name
+                    div.panel-body
+                        case item.name
+                            when 'jquery-checkAll'
+                                include src/jquery-checkAll/demo/demo
+                            when 'jquery-chkMerge'
+                                include src/jquery-chkMerge/demo/demo
+                            default
+                                p.alert-danger No such plugin!
+            each item in plugin
+                +panel(item)

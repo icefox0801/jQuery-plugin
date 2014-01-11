@@ -1,0 +1,12 @@
+{
+	"plugin": [
+		{
+			"name": "jquery-checkAll",
+			"path": "jquery-checkAll/js/jquery.checkAll.js"
+		},
+		{
+			"name": "jquery-chkMerge",
+			"path": "jquery-chkMerge/js/jquery.chkMerge.js"
+		}
+	]
+}

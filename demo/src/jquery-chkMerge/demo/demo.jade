@@ -1,0 +1,93 @@
+div.row
+    div.col-lg-12
+        h4 Usage1:
+        ol
+            li
+                h5
+                    code $('#cbMergeChecked1').chkMerge('.chkMergeGroup');
+            li
+                h5
+                    code $('#cbMergeUnchecked1').chkMerge('.chkMergeGroup', false);
+    div.col-lg-8.col-lg-offset-2
+        form#chkMergeForm1.form-horizontal.well(role="form")
+            div.form-group
+                div.col-sm-offset-3.col-sm-6
+                    h3 Form 1
+            div.form-group
+                label.col-sm-3.control-label(for="#cbMergeChecked1") Checked
+                div.col-sm-6
+                    input#cbMergeChecked1.form-control(type="text",name="checked",placeholder="Checked")
+            div.form-group
+                label.col-sm-3.control-label(for="#cbMergeUnchecked1") Unchecked
+                div.col-sm-6
+                    input#cbMergeUnchecked1.form-control(type="text",name="unchecked",placeholder="Unchecked")
+            each idx in [1,2,3,4]
+                div.form-group.chkMergeGroup1
+                    div.col-sm-offset-3.col-sm-6
+                        label.checkbox
+                            input(id="cbMerge#{idx}",type="checkbox",data-value="#{idx}")
+                            选项#{idx}
+            div.form-group
+                div.col-sm-offset-3.col-sm-6
+                    button.btn.btn-default Submit
+script(type="text/javascript").
+    $(function(){
+        $('#cbMergeChecked1').chkMerge('.chkMergeGroup1');
+        $('#cbMergeUnchecked1').chkMerge('.chkMergeGroup1', false);
+    });
+div.row
+    div.col-lg-12
+        h4 Usage2:
+        ol
+            li
+                h5
+                    code &lt;input name="checked" data-role="chkMerge" data-group=".chkMergeGroup2" data-ref="checked"/&gt;
+            li
+                h5
+                    code &lt;input name="unchecked" data-role="chkMerge" data-group=".chkMergeGroup2" data-ref="unchecked"/&gt;
+    div.col-lg-8.col-lg-offset-2
+        form#chkMergeForm2.form-horizontal.well(role="form")
+            div.form-group
+                div.col-sm-offset-3.col-sm-6
+                    h3 Form 2
+            div.form-group
+                    label.col-sm-3.control-label(for="#cbMergeChecked2") Checked
+                    div.col-sm-6
+                        input#cbMergeChecked2.form-control(type="text",name="checked",data-role="chkMerge",data-group=".chkMergeGroup2",data-ref="checked",placeholder="Checked")
+            div.form-group
+                    label.col-sm-3.control-label(for="#cbMergeUnchecked2") Unchecked
+                    div.col-sm-6
+                        input#cbMergeUnchecked2.form-control(type="text",name="unchecked",data-role="chkMerge",data-group=".chkMergeGroup2",data-ref="unchecked",placeholder="Unchecked")
+            each idx in [5,6,7,8]
+                div.form-group.chkMergeGroup2
+                    div.col-sm-offset-3.col-sm-6
+                        label.checkbox
+                            input(id="cbMerge#{idx}",type="checkbox",data-value="#{idx}")
+                            选项#{idx}
+            div.form-group
+                div.col-sm-offset-3.col-sm-6
+                    button.btn.btn-default Submit
+div.row
+    div.col-lg-12
+        h4 Usage3:
+        ol
+            li
+                h5
+                    code &lt;input name="merged" data-role="chkMerge" data-group=".chkMergeInputGroup" data-valuetag="text"/&gt;
+    div.col-lg-8.col-lg-offset-2
+        form#chkMergeForm3.form-horizontal.well(role="form")
+            div.form-group
+                div.col-sm-offset-3.col-sm-6
+                    h3 Form 3
+            each idx in [1,2,3,4]
+                div.form-group.chkMergeInputGroup
+                    label.col-sm-3.control-label(for="#cbMergeInput#{idx}") Input #{idx}
+                    div.col-sm-6
+                        input.form-control(type="text",id="checkMergeInput#{idx}",placeholder="Input #{idx}")
+            div.form-group
+                label.col-sm-3.control-label(for="#cbMergeInputMerge") Input Merged
+                div.col-sm-6
+                    input.form-control(name="merged",data-role="chkMerge",data-group=".chkMergeInputGroup",data-valuetag="text",placeholder="Input Merged")
+            div.form-group
+                div.col-sm-offset-3.col-sm-6
+                    button.btn.btn-default Submit

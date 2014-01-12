@@ -1,0 +1,51 @@
+div.row
+    div.col-lg-12
+        include:md ../README.md
+hr
+style.
+    #smartTagForm1 span.label {
+        cursor: pointer;
+        margin-right: 5px;
+    }
+div.row
+    div.col-lg-6
+        div.col-sm-12.well
+            h3
+                span.label.label-default Demo 1:
+            form.form-horizontal#smartTagForm1
+                div.form-group
+                    label.col-sm-1.control-label Tag
+                    div.col-sm-11#smartTagGroup1
+                        each idx in [1,2,3,4]
+                            button.btn.btn-default.btn-sm.smartTag(type="button") Option #{idx}&nbsp;
+                div.form-group
+                    label.col-sm-1.control-label Tag
+                    div.col-sm-11(data-role="smartTag",
+                    data-target="#smartTagGroup1",
+                    data-add="/addTag",
+                    data-remove="/removeTag")
+                        each idx in [5,6,7,8,9,10]
+                            button.btn.btn-default.btn-sm.smartTag(type="button") Option #{idx}
+
+//d
+    <div id="target1">
+        <span class="label">示例1&nbsp;<i class="icon-remove"></i></span>
+        <span class="label">示例2&nbsp;<i class="icon-remove"></i></span>
+        <span class="label">示例3&nbsp;<i class="icon-remove"></i></span>
+        <span class="label">示例4&nbsp;<i class="icon-remove"></i></span>
+    </div>
+
+    <div data-role="smartTag" data-target="#target1" data-add="http://addUrl" data-remove="http://removeUrl">
+        <span class="label">示例1</span>
+        <span class="label">示例2</span>
+        <span class="label">示例3</span>
+        <span class="label">示例4</span>
+        <span class="label">示例5</span>
+        <span class="label">示例6</span>
+        <span class="label">示例7</span>
+        <span class="label">示例8</span>
+        <span class="label">示例9</span>
+        <span class="label">示例10</span>
+        <span class="label">示例11</span>
+        <span class="label">示例12</span>
+    </div>

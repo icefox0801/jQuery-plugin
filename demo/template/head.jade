@@ -1,0 +1,32 @@
+meta(charset="utf-8")
+title jQuery plugin Demo
+link(rel="stylesheet",type="text/css",href="css/bootstrap.min.css")
+style.
+    #content {
+        margin-top: 60px;
+    }
+    #navbar {
+        background-color: #428bca;
+        border-color: #428bca;
+    }
+    #navbar .navbar-brand {
+        font-family: "Monaco";
+        font-size: 2em;
+        color: #fff;
+    }
+    #navbar li>a {
+        color: rgba(255,255,255,0.8);
+    }
+    #navbar li>a:hover {
+        color: #fff;
+    }
+    #navbar li.active>a {
+        color: #fff;
+        background-color: rgba(0,0,0,0.2);
+    }
+script(type="text/javascript",src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js")
+script(type="text/javascript",src="js/bootstrap.min.js")
+// build:js tmp/plugin.js
+each item in plugin
+    script(type="text/javascript",src="src/#{item.path}")
+// endbuild

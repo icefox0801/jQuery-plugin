@@ -1,0 +1,45 @@
+div.row
+    div.col-lg-12
+        include:md ../README.md
+hr
+div.row
+    div.col-lg-6
+        form#easyForm1.form-horizontal.well(role="form")
+            div.form-group
+                div.col-sm-offset-3.col-sm-6
+                    h3 Demo 1
+            div.form-group
+                label.col-sm-3.control-label(for="#easyFormInput1") name
+                div.col-sm-6
+                    input#easyFormInput1.form-control(type="text",name="name",placeholder="name")
+            div.form-group
+                label.col-sm-3.control-label(for="#easyFormInput2") age
+                div.col-sm-6
+                    input#easyFormInput2.form-control(type="text",name="age",placeholder="age")
+            div.form-group
+                div.col-sm-offset-3.col-sm-6
+                    button#easyFormBtn.btn.btn-default Submit
+    div.col-lg-6
+        form#easyForm2.form-horizontal.well(role="form")
+            div.form-group
+                div.col-sm-offset-3.col-sm-6
+                    h3 Demo 1
+            div.form-group
+                label.col-sm-3.control-label(for="#easyFormInput3") name
+                div.col-sm-6
+                    input#easyFormInput3.form-control(type="text",name="name",placeholder="name")
+            div.form-group
+                label.col-sm-3.control-label(for="#easyFormInput4") age
+                div.col-sm-6
+                    input#easyFormInput4.form-control(type="text",name="age",placeholder="age")
+            div.form-group
+                div.col-sm-offset-3.col-sm-6
+                    button#easyFormBtn.btn.btn-default(
+                        data-role="easyForm",
+                        data-action="link/to/seconde",
+                        data-disabled="name",
+                        data-method="GET") Submit
+script(type="text/javascript").
+    $(function () {
+        $('#easyFormBtn').easyForm({action: 'link/to/first', method: 'POST', disabled: 'name', ajax: true});
+    });

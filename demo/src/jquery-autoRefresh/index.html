@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8"/>
+    <title>jquery.autoRefresh.js DEMO</title>
+    <script type="text/javascript" src="../../demo/lib/jquery-1.9.1.min.js"></script>
+    <script type="text/javascript" src="../../demo/js/jquery.autoRefresh.js"></script>
+    <script type="text/javascript">
+        (function ($) {
+            $(document).ready(function () {
+                $('.at-rfs').autoRefresh('.at-data');
+            });
+        })(jQuery)
+    </script>
+</head>
+<body>
+<div class="at-rfs">
+    <label class="control-label ">自动刷新
+        <input class="checkbox a-sw" type="checkbox"/>
+    </label>
+    <label class="control-label">刷新间隔
+        <select class="span a-intvl">
+            <option value="30">30秒</option>
+            <option value="60">1分钟</option>
+            <option value="180">3分钟</option>
+            <option value="300">5分钟</option>
+            <option value="600">10分钟</option>
+        </select>
+    </label>
+</div>
+<ul class="at-data">
+    <li>item one</li>
+    <li>item two</li>
+</ul>
+</body>
+<html>

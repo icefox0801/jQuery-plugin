@@ -1,25 +1,55 @@
 doctype html
 html
     head
-        meta(charset="utf-8")
-        title jQuery plugin Demo
-        link(rel="stylesheet",type="text/css",href="css/bootstrap.min.css")
-        script(type="text/javascript",src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js")
-        each item in plugin
-            script(type="text/javascript",src="src/#{item.path}")
+        include template/head
     body
-        div.container
+        header.navbar.navbar-default.navbar-fixed-top#navbar
+            div.container
+                nav.navbar-header
+                    a.navbar-brand(href="#") flybyte.cn
+                nav.collapse.navbar-collapse(role="navigation")
+                    ul.nav.navbar-nav
+                        li
+                            a(href="#")
+                                span.glyphicon.glyphicon-book
+                                span &nbsp;BLOG
+                        li.active
+                            a(href="#")
+                                span.glyphicon.glyphicon-tasks
+                                span &nbsp;DOCUMENTION
+                    ul.nav.navbar-nav.navbar-right
+                        li
+                            a(href="#")
+                                span.glyphicon.glyphicon-user
+                                span &nbsp;ABOUT
+        section.container#content
             mixin panel(item)
-                div.panel.panel-primary
-                    div.panel-heading
-                        strong= item.name
-                    div.panel-body
+                article.panel.panel-primary
+                    header.panel-heading
+                        div.panel-title
+                            a(href="##{item.name}",data-toggle="collapse")
+                                h4= item.name
+                                    i.pull-right.glyphicon.glyphicon-plus
+                    section.panel-collapse.panel-body.collapse(id=item.name)
+                        // Jade不支持include动态参数
                         case item.name
-                            when 'jquery-checkAll'
-                                include src/jquery-checkAll/demo/demo
-                            when 'jquery-chkMerge'
-                                include src/jquery-chkMerge/demo/demo
-                            default
-                                p.alert-danger No such plugin!
-            each item in plugin
-                +panel(item)
+                            when 'jquery-checkAll': include src/jquery-checkAll/demo/demo
+                            when 'jquery-chkMerge': include src/jquery-chkMerge/demo/demo
+                            when 'jquery-smartAt': include src/jquery-smartAt/demo/demo
+                            when 'jquery-pagination': include src/jquery-pagination/demo/demo
+                            when 'jquery-easyForm': include src/jquery-easyForm/demo/demo
+                            when 'jquery-autoRefresh': include src/jquery-autoRefresh/demo/demo
+                            when 'jquery-smartTag': include src/jquery-smartTag/demo/demo
+                            default: p.alert-danger No such plugin!
+            div.row.well
+                div.col-lg-12
+                    include:md ../README.md
+                    dl.dl-horizontal
+                        each item in plugin
+                            dt
+                                a(href="#{url}##{item.name}")= item.name
+                            dd
+                                p= item.description
+            div.row
+                each item in plugin
+                    +panel(item)

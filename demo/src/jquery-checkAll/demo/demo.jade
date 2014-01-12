@@ -1,40 +1,37 @@
 div.row
     div.col-lg-12
-        h4 Usage:
-        ol
-            li
-                h5
-                    code &lt;input type="checkbox" data-role="checkAll" data-group=".checkAll-list1"/&gt;
-    div.col-lg-6.col-lg-offset-3
-        ul.list-group
-            li.list-group-item
-                label(for="checkAll1").checkbox
-                    input#checkAll1(type="checkbox",data-role="checkAll",data-group=".checkAll-list1")
-                    span 全选
-            each idx in [1,2,3,4]
-                li.list-group-item.checkAll-list1
-                    label(for="cbAll#{idx}").checkbox
-                        input(id="cbAll#{idx}",type="checkbox")
-                        span 选项#{idx}
+        include:md ../README.md
+hr
 div.row
-    div.col-lg-12
-        h4 Usage:
-        ol
-            li
-                h5
-                    code $('#checkAll2').checkAll('.checkAll-list2', {count: true});
-    div.col-lg-6.col-lg-offset-3
-        ul.list-group
-            li.list-group-item
-                label(for="checkAll2").checkbox
-                    input#checkAll2(type="checkbox")
-                    span 全选
-            each idx in [5,6,7,8]
-                li.list-group-item.checkAll-list2
-                    label(for="cbAll#{idx}").checkbox
-                        input(id="cbAll#{idx}",type="checkbox")
-                        span 选项#{idx}
+    div.col-lg-6
+        div.col-sm-12.well
+            h3
+                span.label.label-default Demo 1:
+            ul.list-group
+                li.list-group-item
+                    label(for="checkAll1").checkbox
+                        input#checkAll1(type="checkbox",data-role="checkAll",data-group=".checkAllList1")
+                        span Check All
+                each idx in [1,2,3,4]
+                    li.list-group-item.checkAllList1
+                        label(for="cbAll#{idx}").checkbox
+                            input(id="cbAll#{idx}",type="checkbox")
+                            span Option#{idx}
+    div.col-lg-6
+        div.col-sm-12.well
+            h3
+                span.label.label-default Demo 2:
+            ul.list-group
+                li.list-group-item
+                    label(for="checkAll2").checkbox
+                        input#checkAll2(type="checkbox")
+                        span Check All
+                each idx in [5,6,7,8]
+                    li.list-group-item.checkAllList2
+                        label(for="cbAll#{idx}").checkbox
+                            input(id="cbAll#{idx}",type="checkbox")
+                            span Option#{idx}
 script(type="text/javascript").
     $(function(){
-        $('#checkAll2').checkAll('.checkAll-list2', {count: true});
+        $('#checkAll2').checkAll('.checkAllList2', {count: true});
     });

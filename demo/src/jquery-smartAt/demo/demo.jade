@@ -1,0 +1,39 @@
+div.row
+    div.col-lg-12
+        include:md ../README.md
+hr
+div.row
+    div.col-lg-6
+        form#smartAt1.form-horizontal.well(role="form")
+            div.form-group
+                div.col-sm-offset-2.col-sm-10
+                    h3 Demo 1:
+            div.form-group.smartAtGroup1
+                label.col-sm-2.control-label @
+                div.col-sm-10
+                    each idx in [1,2,3,4]
+                        label.checkbox-inline
+                            input(id="smartAt#{idx}",type="checkbox")
+                            span Person#{idx}
+            div.form-group
+                div.col-sm-offset-2.col-sm-10
+                    textarea#smartAtText1.form-control(rows="4")
+    script(type="text/javascript").
+        $(function(){
+            $('.smartAtGroup1').smartAt('#smartAtText1');
+        });
+    div.col-lg-6
+        form#smartAt2.form-horizontal.well(role="form")
+            div.form-group
+                div.col-sm-offset-2.col-sm-10
+                    h3 Demo 2
+            div.form-group.smartAtGroup2(data-role="smartAt",data-target="#smartAtText2")
+                label.col-sm-2.control-label @
+                div.col-sm-10
+                    each idx in [5,6,7,8]
+                        label.checkbox-inline
+                            input(id="smartAt#{idx}",type="checkbox")
+                            span Person#{idx}
+            div.form-group
+                div.col-sm-offset-2.col-sm-10
+                    textarea#smartAtText2.form-control(rows="4")

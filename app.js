@@ -25,10 +25,27 @@ var routes = {
 
 		res.render('index.jade', params);
 		console.log(__dirname);
+	},
+	page: function(req, res){
+		var pageNo = req.params.pageNo;
+		var jsn = {
+			list: params.list.slice((pageNo - 1) * 5, pageNo * 5)
+		}
+		res.render('template/page.jade', jsn);
+	},
+	addTag: function(req, res){
+		res.send({success: true});
+	},
+	removeTag: function(req, res){
+		res.send({success: true});
 	}
 };
 
 app.get('/', routes.index);
+// Production
+app.get('/page/:pageNo', routes.page);
+app.post('/addTag', routes.addTag);
+app.post('/removeTag', routes.removeTag);
 
 http.createServer(app).listen('3000', function(){
   console.log('Express server listening on port ' + app.get('port'));

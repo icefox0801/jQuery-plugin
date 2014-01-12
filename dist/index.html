@@ -1,0 +1,77 @@
+<!DOCTYPE html><html><head><meta charset="utf-8"><title>jQuery plugin Demo</title><link rel="stylesheet" type="text/css" href="css/bootstrap.min.css"><style>#content {
+    margin-top: 60px;
+}
+#navbar {
+    background-color: #428bca;
+    border-color: #428bca;
+}
+#navbar .navbar-brand {
+    font-family: "Monaco";
+    font-size: 2em;
+    color: #fff;
+}
+#navbar li>a {
+    color: rgba(255,255,255,0.8);
+}
+#navbar li>a:hover {
+    color: #fff;
+}
+#navbar li.active>a {
+    color: #fff;
+    background-color: rgba(0,0,0,0.2);
+}</style><script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script><script type="text/javascript" src="js/bootstrap.min.js"></script><script type="text/javascript" src="src/jquery-checkAll/js/jquery.checkAll.js"></script><script type="text/javascript" src="src/jquery-chkMerge/js/jquery.chkMerge.js"></script><script type="text/javascript" src="src/jquery-smartAt/js/jquery.smartAt.js"></script></head><body><header id="navbar" class="navbar navbar-default navbar-fixed-top"><div class="container"><nav class="navbar-header"><a href="#" class="navbar-brand">flybyte.cn</a></nav><nav role="navigation" class="collapse navbar-collapse"><ul class="nav navbar-nav"><li><a href="#"><span class="glyphicon glyphicon-book"></span><span>&nbsp;BLOG</span></a></li><li class="active"><a href="#"><span class="glyphicon glyphicon-tasks"></span><span>&nbsp;DOCUMENTION</span></a></li></ul><ul class="nav navbar-nav navbar-right"><li><a href="#"><span class="glyphicon glyphicon-user"></span><span>&nbsp;ABOUT</span></a></li></ul></nav></div></header><section id="content" class="container"><div class="row"><article class="panel panel-primary"><header class="panel-heading"><div class="panel-title"><a href="#jquery-checkAll" data-toggle="collapse"><h4>jquery-checkAll<i class="pull-right glyphicon glyphicon-plus"></i></h4></a></div></header><section id="jquery-checkAll" class="panel-collapse panel-body collapse"><!-- Jade不支持include动态参数--><div class="row"><div class="col-lg-12"><h1>jquery-checkAll</h1>
+
+<blockquote><p><em>To check all the related checkboxes with a checkbox or button</em></p></blockquote>
+
+<h2>usage</h2>
+
+<hr/>
+
+<ol><li><p><code>$(&#39;#checkAll2&#39;).checkAll(&#39;.checkAllList2&#39;, {count: true});</code></p></li><li><p><code>&lt;input type=&quot;checkbox&quot; data-role=&quot;checkAll&quot; data-group=&quot;.checkAllList2&quot;/&gt;</code></p></li></ol></div></div><hr><div class="row"><div class="col-lg-6"><div class="col-sm-12 well"><h3><span class="label label-default">Demo 1:</span></h3><ul class="list-group"><li class="list-group-item"><label for="checkAll1" class="checkbox"><input id="checkAll1" type="checkbox" data-role="checkAll" data-group=".checkAllList1"><span>Check All</span></label></li><li class="list-group-item checkAllList1"><label for="cbAll1" class="checkbox"><input id="cbAll1" type="checkbox"><span>Option1</span></label></li><li class="list-group-item checkAllList1"><label for="cbAll2" class="checkbox"><input id="cbAll2" type="checkbox"><span>Option2</span></label></li><li class="list-group-item checkAllList1"><label for="cbAll3" class="checkbox"><input id="cbAll3" type="checkbox"><span>Option3</span></label></li><li class="list-group-item checkAllList1"><label for="cbAll4" class="checkbox"><input id="cbAll4" type="checkbox"><span>Option4</span></label></li></ul></div></div><div class="col-lg-6"><div class="col-sm-12 well"><h3><span class="label label-default">Demo 2:</span></h3><ul class="list-group"><li class="list-group-item"><label for="checkAll2" class="checkbox"><input id="checkAll2" type="checkbox"><span>Check All</span></label></li><li class="list-group-item checkAllList2"><label for="cbAll5" class="checkbox"><input id="cbAll5" type="checkbox"><span>Option5</span></label></li><li class="list-group-item checkAllList2"><label for="cbAll6" class="checkbox"><input id="cbAll6" type="checkbox"><span>Option6</span></label></li><li class="list-group-item checkAllList2"><label for="cbAll7" class="checkbox"><input id="cbAll7" type="checkbox"><span>Option7</span></label></li><li class="list-group-item checkAllList2"><label for="cbAll8" class="checkbox"><input id="cbAll8" type="checkbox"><span>Option8</span></label></li></ul></div></div></div><script type="text/javascript">$(function(){
+    $('#checkAll2').checkAll('.checkAllList2', {count: true});
+});</script></section></article><article class="panel panel-primary"><header class="panel-heading"><div class="panel-title"><a href="#jquery-chkMerge" data-toggle="collapse"><h4>jquery-chkMerge<i class="pull-right glyphicon glyphicon-plus"></i></h4></a></div></header><section id="jquery-chkMerge" class="panel-collapse panel-body collapse"><!-- Jade不支持include动态参数--><div class="row"><div class="col-lg-12"><h1>jquery-chkMerge</h1>
+
+<blockquote><p><em>Merge the value of a gruop of checkboxes into an input element.</em></p></blockquote>
+
+<h2>Options</h2>
+
+<hr/>
+
+<p><code>split</code>: The seperator, default is &#39;,&#39;.</p>
+
+<p><code>valuetag</code>: The tag to get the &#39;@&#39; value, default is &#39;checkbox&#39; value in attribute &#39;id&#39;, and &#39;label&#39; is also a choice.</p>
+
+<p><code>ref</code>: To input <strong>checked</strong> value or <strong>uncheck</strong> value.</p>
+
+<p><code>event</code>: The event in which the value of checkbox group could be merged.</p>
+
+<p><code>trigger</code>: The element to trigger the <code>event</code>. If define a <strong>submit</strong> event and not define <code>trigger</code>, the closest form elemet will be the trigger.</p>
+
+<p><code>callback</code>: Callback function when event is triggered.</p>
+
+<h2>Usages</h2>
+
+<hr/>
+
+<ol><li><p><code>$(&#39;#cbMergeChecked1&#39;).chkMerge(&#39;.chkMergeGroup&#39;);</code></p><p><code>$(&#39;#cbMergeUnchecked1&#39;).chkMerge(&#39;.chkMergeGroup&#39;, false);</code></p></li><li><p><code>&lt;input name=&quot;checked&quot; data-role=&quot;chkMerge&quot; data-group=&quot;.chkMergeGroup2&quot; data-ref=&quot;checked&quot;/&gt;</code></p><p><code>&lt;input name=&quot;unchecked&quot; data-role=&quot;chkMerge&quot; data-group=&quot;.chkMergeGroup2&quot; data-ref=&quot;unchecked&quot;/&gt;</code></p></li><li><p><code>&lt;input name=&quot;merged&quot; data-role=&quot;chkMerge&quot; data-group=&quot;.chkMergeInputGroup&quot; data-valuetag=&quot;text&quot;&gt;</code></p></li></ol></div></div><hr><div class="row"><div class="col-lg-4"><form id="chkMergeForm1" role="form" class="form-horizontal well"><div class="form-group"><div class="col-sm-offset-3 col-sm-6"><h3>Demo 1</h3></div></div><div class="form-group"><label for="#cbMergeChecked1" class="col-sm-3 control-label">Checked</label><div class="col-sm-6"><input id="cbMergeChecked1" type="text" name="checked" placeholder="Checked" class="form-control"></div></div><div class="form-group"><label for="#cbMergeUnchecked1" class="col-sm-3 control-label">Unchecked</label><div class="col-sm-6"><input id="cbMergeUnchecked1" type="text" name="unchecked" placeholder="Unchecked" class="form-control"></div></div><div class="form-group chkMergeGroup1"><div class="col-sm-offset-3 col-sm-6"><label class="checkbox"><input id="cbMerge1" type="checkbox" data-value="1"><span>Option1</span></label></div></div><div class="form-group chkMergeGroup1"><div class="col-sm-offset-3 col-sm-6"><label class="checkbox"><input id="cbMerge2" type="checkbox" data-value="2"><span>Option2</span></label></div></div><div class="form-group chkMergeGroup1"><div class="col-sm-offset-3 col-sm-6"><label class="checkbox"><input id="cbMerge3" type="checkbox" data-value="3"><span>Option3</span></label></div></div><div class="form-group chkMergeGroup1"><div class="col-sm-offset-3 col-sm-6"><label class="checkbox"><input id="cbMerge4" type="checkbox" data-value="4"><span>Option4</span></label></div></div><div class="form-group"><div class="col-sm-offset-3 col-sm-6"><button class="btn btn-default">Submit</button></div></div></form></div><script type="text/javascript">$(function(){
+    $('#cbMergeChecked1').chkMerge('.chkMergeGroup1');
+    $('#cbMergeUnchecked1').chkMerge('.chkMergeGroup1', false);
+});</script><div class="col-lg-4"><form id="chkMergeForm2" role="form" class="form-horizontal well"><div class="form-group"><div class="col-sm-offset-3 col-sm-6"><h3>Demo 2</h3></div></div><div class="form-group"><label for="#cbMergeChecked2" class="col-sm-3 control-label">Checked</label><div class="col-sm-6"><input id="cbMergeChecked2" type="text" name="checked" data-role="chkMerge" data-group=".chkMergeGroup2" data-ref="checked" placeholder="Checked" class="form-control"></div></div><div class="form-group"><label for="#cbMergeUnchecked2" class="col-sm-3 control-label">Unchecked</label><div class="col-sm-6"><input id="cbMergeUnchecked2" type="text" name="unchecked" data-role="chkMerge" data-group=".chkMergeGroup2" data-ref="unchecked" placeholder="Unchecked" class="form-control"></div></div><div class="form-group chkMergeGroup2"><div class="col-sm-offset-3 col-sm-6"><label class="checkbox"><input id="cbMerge5" type="checkbox" data-value="5"><span>Option5</span></label></div></div><div class="form-group chkMergeGroup2"><div class="col-sm-offset-3 col-sm-6"><label class="checkbox"><input id="cbMerge6" type="checkbox" data-value="6"><span>Option6</span></label></div></div><div class="form-group chkMergeGroup2"><div class="col-sm-offset-3 col-sm-6"><label class="checkbox"><input id="cbMerge7" type="checkbox" data-value="7"><span>Option7</span></label></div></div><div class="form-group chkMergeGroup2"><div class="col-sm-offset-3 col-sm-6"><label class="checkbox"><input id="cbMerge8" type="checkbox" data-value="8"><span>Option8</span></label></div></div><div class="form-group"><div class="col-sm-offset-3 col-sm-6"><button class="btn btn-default">Submit</button></div></div></form></div><div class="col-lg-4"><form id="chkMergeForm3" role="form" class="form-horizontal well"><div class="form-group"><div class="col-sm-offset-3 col-sm-6"><h3>Demo 3:</h3></div></div><div class="form-group chkMergeInputGroup"><label for="#cbMergeInput1" class="col-sm-3 control-label">Input 1</label><div class="col-sm-6"><input type="text" id="checkMergeInput1" placeholder="Input 1" class="form-control"></div></div><div class="form-group chkMergeInputGroup"><label for="#cbMergeInput2" class="col-sm-3 control-label">Input 2</label><div class="col-sm-6"><input type="text" id="checkMergeInput2" placeholder="Input 2" class="form-control"></div></div><div class="form-group chkMergeInputGroup"><label for="#cbMergeInput3" class="col-sm-3 control-label">Input 3</label><div class="col-sm-6"><input type="text" id="checkMergeInput3" placeholder="Input 3" class="form-control"></div></div><div class="form-group chkMergeInputGroup"><label for="#cbMergeInput4" class="col-sm-3 control-label">Input 4</label><div class="col-sm-6"><input type="text" id="checkMergeInput4" placeholder="Input 4" class="form-control"></div></div><div class="form-group"><label for="#cbMergeInputMerge" class="col-sm-3 control-label">Input Merged</label><div class="col-sm-6"><input name="merged" data-role="chkMerge" data-group=".chkMergeInputGroup" data-valuetag="text" placeholder="Input Merged" class="form-control"></div></div><div class="form-group"><div class="col-sm-offset-3 col-sm-6"><button class="btn btn-default">Submit</button></div></div></form></div></div></section></article><article class="panel panel-primary"><header class="panel-heading"><div class="panel-title"><a href="#jquery-smartAt" data-toggle="collapse"><h4>jquery-smartAt<i class="pull-right glyphicon glyphicon-plus"></i></h4></a></div></header><section id="jquery-smartAt" class="panel-collapse panel-body collapse"><!-- Jade不支持include动态参数--><div class="row"><div class="col-lg-12"><h1>jquery-smartAt</h1>
+
+<blockquote><p><em>A light weight plugin for checking the checkbox to input &#39;@someone&#39; in textarea</em></p></blockquote>
+
+<h3>Options</h3>
+
+<hr/>
+
+<p><code>valueTag</code>: The tag to get the &#39;@&#39; value, default is &#39;label&#39; and &#39;chechbox&#39; is also a choice.</p>
+
+<p><code>autoFocus</code>: Default is <strong>true</strong>, boolean type to focus automatically the textarea or not after checking the checkboxes.</p>
+
+<h3>Usages</h3>
+
+<hr/>
+
+<ol><li><p><code>$(&#39;#smartAtText1&#39;).smartAt(&#39;.smartAtGroup1&#39;);</code></p></li><li><p><code>&lt;div data-role=&quot;smartAt&quot; data-target=&quot;#smartAtText2&quot;&gt;</code></p></li></ol></div></div><hr><div class="row"><div class="col-lg-6"><form id="smartAt1" role="form" class="form-horizontal well"><div class="form-group"><div class="col-sm-offset-2 col-sm-10"><h3>Demo 1:</h3></div></div><div class="form-group smartAtGroup1"><label class="col-sm-2 control-label">@</label><div class="col-sm-10"><label class="checkbox-inline"><input id="smartAt1" type="checkbox"><span>Person1</span></label><label class="checkbox-inline"><input id="smartAt2" type="checkbox"><span>Person2</span></label><label class="checkbox-inline"><input id="smartAt3" type="checkbox"><span>Person3</span></label><label class="checkbox-inline"><input id="smartAt4" type="checkbox"><span>Person4</span></label></div></div><div class="form-group"><div class="col-sm-offset-2 col-sm-10"><textarea id="smartAtText1" rows="4" class="form-control"></textarea></div></div></form></div><script type="text/javascript">$(function(){
+    $('.smartAtGroup1').smartAt('#smartAtText1');
+});</script><div class="col-lg-6"><form id="smartAt2" role="form" class="form-horizontal well"><div class="form-group"><div class="col-sm-offset-2 col-sm-10"><h3>Demo 2</h3></div></div><div data-role="smartAt" data-target="#smartAtText2" class="form-group smartAtGroup2"><label class="col-sm-2 control-label">@</label><div class="col-sm-10"><label class="checkbox-inline"><input id="smartAt5" type="checkbox"><span>Person5</span></label><label class="checkbox-inline"><input id="smartAt6" type="checkbox"><span>Person6</span></label><label class="checkbox-inline"><input id="smartAt7" type="checkbox"><span>Person7</span></label><label class="checkbox-inline"><input id="smartAt8" type="checkbox"><span>Person8</span></label></div></div><div class="form-group"><div class="col-sm-offset-2 col-sm-10"><textarea id="smartAtText2" rows="4" class="form-control"></textarea></div></div></form></div></div></section></article></div></section></body></html>

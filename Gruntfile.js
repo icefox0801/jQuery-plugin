@@ -15,6 +15,8 @@ module.exports = function(grunt) {
 	grunt.loadNpmTasks('grunt-contrib-concat');
 	grunt.loadNpmTasks('grunt-contrib-uglify');
 	grunt.loadNpmTasks('grunt-contrib-jade');
+	grunt.loadNpmTasks('grunt-usemin');
+	grunt.loadNpmTasks('grunt-contrib-htmlmin');
 
 	//config
 	grunt.initConfig({
@@ -30,23 +32,28 @@ module.exports = function(grunt) {
 			}
 
 		},
-
 		// copy files from source folder to destination folder
 		copy: {
 			js: {
 				expand: true,
 				flatten: true,
-				cwd: 'js/',
+				cwd: 'demo/',
 				src: 'src/**/*.js',
 				dest: 'dist/tmp/js',
 				filter: 'isFile'
+			},
+			sources: {
+				expand: true,
+				cwd: 'demo/',
+				src: ['css/bootstrap.min.css','fonts/*','js/bootstrap.min.js'],
+				dest: 'dist/sources/'
 			}
 		},
-
 		// Compile jade template into html files
 		jade: {
 			compile: {
 				options: {
+					pretty: true, // default to false, will cause bug in usemin task
 					data: params
 				},
 
@@ -60,51 +67,69 @@ module.exports = function(grunt) {
 
 			}
 		},
-
-		// Replace reference to non-optimized javascript and CSS
+		// Replace reference with optimized javascript and CSS
 		usemin: {
-			options: {
-
-			},
-			html: []
-		},
-
-		// compress js files with uglifyJS
-		uglify: {
-
-			dist: {
-				expand: true,
-				flatten: true,
-				cwd: 'dist/',
-				src: 'tmp/*.js',
-				dest: 'dist/js'
+			html: {
+				src: 'dist/index.html'
 			}
 		},
-
-		//concat js files into a file
+		// compress js files with uglifyJS
+		uglify: {
+			js: {
+				options: {
+					banner: '/*! <%= pkg.name %> - v<%= pkg.version %> - ' + '<%= grunt.template.today("yyyy-mm-dd") %> */'
+				},
+				files: {
+					'dist/sources/js/plugin.min.js': ['dist/tmp/plugin.js']
+				}
+			}
+		},
+		// concat js files
 		concat: {
-			options: {
-				separator: '\n',
-				banner: '/*! <%= pkg.name %> - v<%= pkg.version %> - ' + '<%= grunt.template.today("yyyy-mm-dd") %> */'
-			},
+			js: {
+				options: {
+					separator: '\n'
+				},
+				src: 'dist/tmp/js/*.js',
+				dest: 'dist/tmp/plugin.js'
+			}
+		},
+		// compress index.html
+		htmlmin: {
+			index: {
+				options: {
+					removeComments: true,
+					collapseWhitespace: true
+				},
 
-			dist: {
-				src: 'dist/js/*.js',
-				dest: 'dist/min/plugin.min.js'
+				files: {
+					'dist/index.html': 'dist/index.html'
+				}
 			}
 		}
 	});
 
+	grunt.registerTask('jsmin', [
+		'copy:js',
+		'concat:js',
+		'uglify:js'
+	]);
+
+	grunt.registerTask('copyFiles', [
+		'jsmin',
+		'copy:sources'
+	]);
 	// 生成index.html
-	grunt.resisterTask('renderIndex', [
+	grunt.registerTask('jade2html', [
 		'jade:compile',
+		'usemin:html',
+		'htmlmin:index'
 	]);
 
 	grunt.registerTask('dist', [
 		'clean:before',
-		'copy:dist',
-		'uglify:dist',
-		'concat:dist',
+		'copyFiles',
+		'jade2html',
 		'clean:after'
 	]);
 

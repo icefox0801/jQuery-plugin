@@ -1,6 +1,8 @@
 meta(charset="utf-8")
 title jQuery plugin Demo
-link(rel="stylesheet",type="text/css",href="css/bootstrap.min.css")
+// build:css sources/css/bootstrap.min.css
+link(rel="stylesheet",type="text/css",href="css/bootstrap.css")
+// endbuild
 style.
     #content {
         margin-top: 60px;
@@ -25,8 +27,10 @@ style.
         background-color: rgba(0,0,0,0.2);
     }
 script(type="text/javascript",src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js")
-script(type="text/javascript",src="js/bootstrap.min.js")
-// build:js tmp/plugin.js
+// build:js sources/js/bootstrap.min.js
+script(type="text/javascript",src="js/bootstrap.js")
+// endbuild
+// build:js sources/js/plugin.min.js
 each item in plugin
     script(type="text/javascript",src="src/#{item.path}")
 // endbuild

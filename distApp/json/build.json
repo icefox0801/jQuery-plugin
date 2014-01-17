@@ -1,0 +1,46 @@
+{
+	"url": "http://flybyte.cn",
+	"plugin": [
+		{
+			"name": "jquery-checkAll",
+			"path": "jquery-checkAll/js/jquery.checkAll.js",
+			"description": "To check all the related checkboxes with a checkbox or button."
+		},
+		{
+			"name": "jquery-chkMerge",
+			"path": "jquery-chkMerge/js/jquery.chkMerge.js",
+			"description": "Merge the value of a group of checkboxes into an input element."
+		},
+		{
+			"name": "jquery-smartAt",
+			"path": "jquery-smartAt/js/jquery.smartAt.js",
+			"description": "A light weight plugin for checking the checkbox to input '@someone' in textarea."
+		},
+		{
+			"name": "jquery-pagination",
+			"path": "jquery-pagination/js/jquery.pagination.js",
+			"description": "A jquery plugin to create pagination list."
+		},
+		{
+			"name": "jquery-easyForm",
+			"path": "jquery-easyForm/js/jquery.easyForm.js",
+			"description": "A light weight plugin to change the way the form is submitted."
+		},
+		{
+			"name": "jquery-smartTag",
+			"path": "jquery-smartTag/js/jquery.smartTag.js",
+			"description": "A jquery plugin for adding and remove tags."
+		},
+		{
+			"name": "jquery-easyLoad",
+			"path": "jquery-easyLoad/js/jquery.easyLoad.js",
+			"description": "A jquery plugin for reloading content in an area on pages with events bound on element."
+		},
+		{
+			"name": "jquery-autoRefresh",
+			"path": "jquery-autoRefresh/js/jquery.autoRefresh.js",
+			"description": "A jquery plugin to refresh a page at intervals synchronously or asynchronously."
+		}
+	],
+	"pageTotal": "5"
+}

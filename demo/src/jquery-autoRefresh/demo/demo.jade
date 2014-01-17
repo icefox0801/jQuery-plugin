@@ -15,12 +15,12 @@ div.row
                     label 刷新间隔
                         select.a-intvl
                             each time in [30, 60, 180, 300, 600]
-                                option(value=time) #{time}秒
+                                option(value=time) #{time} seconds
 div.row
     div.col-lg-12
         div.col-sm-12.well
             ul.list-group#autoRefreshList
-                each item,idx in list
+                //each item,idx in list
                     if idx>10
                         li.list-group-item(id=item.id)= item.value
 script(type="text/javascript").

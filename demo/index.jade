@@ -6,6 +6,7 @@ html
         include template/nav
         section.container#content
             mixin panel(item)
+                a.anchor(name="#{item.name}-section",id="#{item.name}-section")
                 article.panel.panel-primary
                     header.panel-heading
                         div.panel-title
@@ -19,6 +20,7 @@ html
                             when 'jquery-chkMerge': include src/jquery-chkMerge/demo/demo
                             when 'jquery-smartAt': include src/jquery-smartAt/demo/demo
                             when 'jquery-pagination': include src/jquery-pagination/demo/demo
+                            when 'jquery-easyLoad': include  src/jquery-easyLoad/demo/demo
                             when 'jquery-easyForm': include src/jquery-easyForm/demo/demo
                             when 'jquery-autoRefresh': include src/jquery-autoRefresh/demo/demo
                             when 'jquery-smartTag': include src/jquery-smartTag/demo/demo
@@ -29,9 +31,16 @@ html
                     dl.dl-horizontal
                         each item in plugin
                             dt
-                                a(href="#{url}##{item.name}")= item.name
+                                a(href="##{item.name}-section")= item.name
                             dd
                                 p= item.description
             div.row
                 each item in plugin
                     +panel(item)
+            script.
+                (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+                (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+                m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+                })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+                    ga('create', 'UA-47217488-1', 'flybyte.cn');
+                ga('send', 'pageview');

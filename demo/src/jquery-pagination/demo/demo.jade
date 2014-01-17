@@ -8,33 +8,25 @@ div.row
             h3
                 span.label.label-default Demo 1:
             ul.list-group#paginationList1
-                each item,idx in list
-                    if idx < 5
-                        li.list-group-item
-                            span= item.value
             div.pull-right
                 ul.pagination(
                     data-role="pagination",
                     data-page="1",
-                    data-total=Math.ceil(list.length/5),
                     data-ajax="true",
+                    data-total="#{pageTotal}"
                     data-target="#paginationList1")
     div.col-lg-6
         div.col-sm-12.well
             h3
                 span.label.label-default Demo 2:
             ul.list-group#paginationList2
-                each item,idx in list
-                    if idx < 5
-                        li.list-group-item
-                            span= item.value
             div.pull-right
                 ul.pagination#pagination2
 script(type="text/javascript").
     $(function () {
         $('#pagination2').pagination({
             page: '1',
-            total: '#{Math.ceil(list.length/5)}',
-            ajax: 'true'
+            ajax: 'true',
+            total: '#{pageTotal}',
         }, '#paginationList2');
     });

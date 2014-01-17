@@ -49,6 +49,11 @@
 			return $el;
 		},
 
+		init: function(options) {
+			var that = this;
+			that.ajaxPager(options.href.replace('{page}', '1'), options.page);
+		},
+
 		/*创建分页函数*/
 		create: function (options) {
 			var page = parseInt(options.page);
@@ -104,9 +109,7 @@
 			if (!data) {
 				$this.data('pagination', data = new Pagination(this, options, target));
 			}
-			else {
-				data.create($.extend({}, data.options, options));
-			}
+			data.init($.extend({}, data.options, options));
 			/*ajax方式翻页*/
 			data.options.ajax && $this.on('click', 'a', function(event){
 				var $elem = $(event.target),
@@ -120,12 +123,12 @@
 	$.fn.pagination.defaults = {
 		target: '', //翻页区域
 		total: 0,//总计页码
-		page: 0,//当前页码
+		page: 1,//当前页码
 		prev: '上一页',//向前翻页文字
 		next: '下一页',//向后翻页文字
 		length: 2,//中间页码左右各有的页码数
 		href: 'page/{page}',//a标签的href属性，{page}是页码数的占位符
-		ajax: false//是否ajax翻页
+		ajax: true//是否ajax翻页
 	};
 
 	$.fn.pagination.Constructor = Pagination;

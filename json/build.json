@@ -33,7 +33,7 @@
 		},
 		{
 			"name": "jquery-easyLoad",
-			"path": "jquery-easyLoad/js/jquery.autoRefresh.js",
+			"path": "jquery-easyLoad/js/jquery.easyLoad.js",
 			"description": "A jquery plugin for reloading content in an area on pages with events bound on element."
 		},
 		{
@@ -42,111 +42,5 @@
 			"description": "A jquery plugin to refresh a page at intervals synchronously or asynchronously."
 		}
 	],
-	"list": [
-		{
-			"id": "1",
-			"key": "1",
-			"value": "item 1"
-		},
-		{
-			"id": "2",
-			"key": "2",
-			"value": "item 2"
-		},
-		{
-			"id": "3",
-			"key": "3",
-			"value": "item 3"
-		},
-		{
-			"id": "4",
-			"key": "4",
-			"value": "item 4"
-		},
-		{
-			"id": "5",
-			"key": "5",
-			"value": "item 5"
-		},
-		{
-			"id": "6",
-			"key": "6",
-			"value": "item 6"
-		},
-		{
-			"id": "7",
-			"key": "7",
-			"value": "item 7"
-		},
-		{
-			"id": "8",
-			"key": "8",
-			"value": "item 8"
-		},
-		{
-			"id": "9",
-			"key": "9",
-			"value": "item 9"
-		},
-		{
-			"id": "10",
-			"key": "10",
-			"value": "item 10"
-		},
-		{
-			"id": "11",
-			"key": "11",
-			"value": "item 11"
-		},
-		{
-			"id": "12",
-			"key": "12",
-			"value": "item 12"
-		},
-		{
-			"id": "13",
-			"key": "13",
-			"value": "item 13"
-		},
-		{
-			"id": "14",
-			"key": "14",
-			"value": "item 14"
-		},
-		{
-			"id": "15",
-			"key": "15",
-			"value": "item 15"
-		},
-		{
-			"id": "16",
-			"key": "16",
-			"value": "item 16"
-		},
-		{
-			"id": "17",
-			"key": "17",
-			"value": "item 17"
-		},
-		{
-			"id": "18",
-			"key": "18",
-			"value": "item 18"
-		},
-		{
-			"id": "19",
-			"key": "19",
-			"value": "item 19"
-		},
-		{
-			"id": "20",
-			"key": "20",
-			"value": "item 20"
-		},
-		{
-			"id": "21",
-			"key": "21",
-			"value": "item 21"
-		}
-	]
+	"pageTotal": "5"
 }

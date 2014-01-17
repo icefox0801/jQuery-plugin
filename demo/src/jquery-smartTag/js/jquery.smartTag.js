@@ -21,27 +21,15 @@
 		/*初始化备选标签区域函数*/
 		initOptions : function() {
 			var that = this, items = this.options.dataSource, $lbs = this.$target.find(this.options.tagsOption);
-
-			/*如果定义了options.dataSource，从dataSource中获取标签组，未定义从options.tagsOption中获取*/
-			if (items.length) {
-				/*生成备选标签组*/
-				for ( var i = 0; i < items.length; i++) {
-					var $item = $('<span class="label">' + items[i] + '</span>');
-					$lbs.each(function() {
-						$lbs.text().trim() == items[i] || this.$element.append($item);
-					});
-				}
-			} else {
-				var $opts = this.$element.find(this.options.tagsOption);
-				/*生成备选标签组*/
-				$opts.each(function() {
-					var $opt = $(this);
-					$lbs.each(function() {
-						var $this = $(this);
-						$opt.text().trim() == $this.text().trim() && $opt.remove();
-					});
+			var $opts = this.$element.find(this.options.tagsOption);
+			/*生成备选标签组*/
+			$opts.each(function() {
+				var $opt = $(this);
+				$lbs.each(function() {
+					var $this = $(this);
+					$opt.text().trim() == $this.text().trim() && $opt.remove();
 				});
-			}
+			});
 		},
 
 		/*获取标签值*/
@@ -65,7 +53,7 @@
 
 		/*移除标签函数*/
 		removeTag : function(elem) {
-			var $elem = $(elem).closest('button'), value = $elem.text().trim();
+			var $elem = $(elem).closest(this.options.tagsOption), value = $elem.text().trim();
 			$elem.remove();
 			this.$element.append($elem);
 		},
@@ -137,7 +125,6 @@
 	};
 
 	$.fn.smartTag.defaults = {
-		dataSource : [],//标签数据源，与tagsOption两者只能定义一个
 		tagsOption : '.smartTag',//备选标签组
 		ajax : 'true',//是否ajax请求
 		type : 'post',//请求方式

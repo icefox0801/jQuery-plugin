@@ -29,8 +29,10 @@ module.exports = function(grunt) {
 			},
 			after: {
 				src: ['dist/tmp', 'dist/js']
+			},
+			app: {
+				src: ['distApp/']
 			}
-
 		},
 		// copy files from source folder to destination folder
 		copy: {
@@ -47,6 +49,11 @@ module.exports = function(grunt) {
 				cwd: 'demo/',
 				src: ['css/bootstrap.min.css','fonts/*','js/bootstrap.min.js'],
 				dest: 'dist/sources/'
+			},
+			app: {
+				expand: true,
+				src: ['app.js', 'json/*'],
+				dest: 'distApp/'
 			}
 		},
 		// Compile jade template into html files
@@ -125,6 +132,11 @@ module.exports = function(grunt) {
 		'usemin:html',
 		'htmlmin:index'
 	]);
+	// 发布后台应用
+	grunt.registerTask('distApp', [
+		'clean:app',
+		'copy:app'
+	]);
 
 	grunt.registerTask('dist', [
 		'clean:before',
@@ -134,6 +146,7 @@ module.exports = function(grunt) {
 	]);
 
 	grunt.registerTask('default', [
-		'dist'
+		'dist',
+		'distApp'
 	]);
 };

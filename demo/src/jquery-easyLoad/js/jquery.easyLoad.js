@@ -54,7 +54,7 @@
 			this.$el.load(this.options.url, params, function () {
 				var $this = $(this);
 				$.Event('easyLoad');
-				$this.trigger('easyLoad');//触发easyLoad事件
+				that.$el.trigger('easyLoad');//触发easyLoad事件
 				/*结合分页插件设置分页*/
 				var $pg = that.$el.find(that.options.pgApi);
 				$pg.pagination($pg.data());
@@ -127,7 +127,6 @@
 				});
 		}
 	};
-
 	/* PLUGIN DEFINITION
 	 * ================ */
 	/**
@@ -151,14 +150,12 @@
 		});
 	};
 
-
 	$.fn.easyLoad.defaults = {
-		url: '',//动态加载的URL
+		url: 'fetchData/list',//动态加载的URL
 		pgApi: '[data-role=pagination]',//分页插件API
 		exparam: 'page',//额外参数名
 		exvalue: '1'//额外参数值
 	};
-
 	/* NO CONFLICT
 	 * =========== */
 	var old = $.fn.easyLoad;
@@ -166,7 +163,6 @@
 		$.fn.easyLoad = old;
 		return this;
 	};
-
 	/* DEBUG
 	 * ===== */
 	var debug = function (error) {
@@ -174,10 +170,6 @@
 			console.error('jquery.easyLoad.js-' + error);
 		}
 	};
-
-	/* EVENTS DEFINITION
-	 * ================= */
-
 	/* DATA-API
 	 * ======== */
 	$(document).ready(function () {

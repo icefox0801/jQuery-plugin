@@ -47,8 +47,12 @@ module.exports = function(grunt) {
 			sources: {
 				expand: true,
 				cwd: 'demo/',
-				src: ['css/bootstrap.min.css','fonts/*','js/bootstrap.min.js'],
+				src: ['css/bootstrap.min.css','fonts/*','js/bootstrap.min.js','js/jquery-1.10.2.min.js'],
 				dest: 'dist/sources/'
+			},
+			favicon: {
+				src: ['favicon.ico'],
+				dest: 'dist/'
 			},
 			app: {
 				expand: true,
@@ -124,7 +128,8 @@ module.exports = function(grunt) {
 
 	grunt.registerTask('copyFiles', [
 		'jsmin',
-		'copy:sources'
+		'copy:sources',
+		'copy:favicon'
 	]);
 	// 生成index.html
 	grunt.registerTask('jade2html', [

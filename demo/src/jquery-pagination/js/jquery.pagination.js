@@ -17,12 +17,19 @@
 		this.$element = $(element);
 		this.$target = $(target);
 		this.options = $.extend({}, $.fn.pagination.defaults, options);
-		this.create(this.options);
+		this.init(this.options);
 	};
 
 	Pagination.prototype = {
 		constructor: Pagination,
-
+		/**
+		 * 初始化翻页区域
+		 * @param options 参数
+		 */
+		init: function(options) {
+			var that = this;
+			that.ajaxPager(options.href.replace('{page}', '1'), options.page);
+		},
 		disable: function ($el) {
 			$el.attr('class', 'disabled');
 			$el.find('a').removeAttr('href');
@@ -48,13 +55,10 @@
 			$el.find('a').data('pageNo', page); // 为每个anchor元素的data-pageNo设置value，以便翻页时取值
 			return $el;
 		},
-
-		init: function(options) {
-			var that = this;
-			that.ajaxPager(options.href.replace('{page}', '1'), options.page);
-		},
-
-		/*创建分页函数*/
+		/**
+		 * 创建分页函数
+		 * @param options 参数
+		 */
 		create: function (options) {
 			var page = parseInt(options.page);
 			var total = parseInt(options.total);
@@ -92,10 +96,11 @@
 		ajaxPager: function(url, pageNo) {
 			var that = this;
 			url && $.get(url, function(data) {
-				that.$target.html(data);
 				that.options.page = pageNo;
+				that.options.total = data.total;
+				that.options.render(that.$target, data.list);
 				that.create(that.options);
-			});
+			}, 'json');
 		}
 	};
 
@@ -109,9 +114,8 @@
 			if (!data) {
 				$this.data('pagination', data = new Pagination(this, options, target));
 			}
-			data.init($.extend({}, data.options, options));
 			/*ajax方式翻页*/
-			data.options.ajax && $this.on('click', 'a', function(event){
+			$this.on('click', 'a', function(event){
 				var $elem = $(event.target),
 					pageNo = $elem.data('pageNo');
 				event.preventDefault();
@@ -121,14 +125,18 @@
 	};
 
 	$.fn.pagination.defaults = {
-		target: '', //翻页区域
-		total: 0,//总计页码
-		page: 1,//当前页码
-		prev: '上一页',//向前翻页文字
-		next: '下一页',//向后翻页文字
-		length: 2,//中间页码左右各有的页码数
-		href: 'page/{page}',//a标签的href属性，{page}是页码数的占位符
-		ajax: true//是否ajax翻页
+		target: '', // 翻页区域
+		total: 0,// 总计页码
+		page: 1,// 当前页码
+		prev: '上一页',// 向前翻页文字
+		next: '下一页',// 向后翻页文字
+		display: 5,// 分页条显示的页码数
+		href: '/fetchData/page/{page}', // a标签的href属性，{page}是页码数的占位符
+		render: function($target, data){
+			$.post('fetchData/renderPage', {param: JSON.stringify(data)}, function(text) {
+				$target.html(text);
+			});
+		} // 渲染方法，用例为服务器端渲染，也可用浏览器端渲染
 	};
 
 	$.fn.pagination.Constructor = Pagination;

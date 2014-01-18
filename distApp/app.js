@@ -13,7 +13,7 @@ var app = express();
 app.set('port', 8089);
 app.set('views', path.join(__dirname, 'demo/'));
 app.set('view engine', 'jade');
-//app.use(express.favicon());
+app.use(express.favicon('favicon.ico'));
 //app.use(express.logger('dev'));
 //app.use(express.bodyParser());
 //app.use(express.methodOverride());
@@ -30,8 +30,10 @@ var routes = {
 	page: function(req, res){
 		var pageNo = req.params.pageNo;
 		var jsn = {
-			list: data.list.slice((pageNo - 1) * 5, pageNo * 5)
+			list: data.list.slice((pageNo - 1) * 5, pageNo * 5),
+			total: data.list.length
 		}
+
 		res.render('template/page.jade', jsn);
 	},
 	addTag: function(req, res){

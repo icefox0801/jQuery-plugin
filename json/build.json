@@ -1,5 +1,7 @@
 {
 	"url": "http://flybyte.cn",
+	"indexUrl": "index.jade",
+	"pageUrl": "../template/page.jade",
 	"plugin": [
 		{
 			"name": "jquery-checkAll",
@@ -42,5 +44,5 @@
 			"description": "A jquery plugin to refresh a page at intervals synchronously or asynchronously."
 		}
 	],
-	"pageTotal": "5"
+	"continent": ["Asia", "Europe", "Australia", "Africa", "North America", "South America", "Antarctica"]
 }

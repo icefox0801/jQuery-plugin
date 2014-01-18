@@ -6,13 +6,24 @@ div.row
         div.col-sm-12.well
             form#easyLoadForm.form-horizontal
                 div.form-group
-                    label.col-sm-3.control-label PageNo:
-                    div.col-sm-3.input-group
-                        input.form-control(type="text",name="page",placeholder="PageNo")
-                        span.input-group-btn
-                            button.btn.btn-info(type=button) Search
+                    label.col-sm-3.control-label keywords:
+                    div.col-sm-3
+                        div.input-group
+                            input.form-control(type="text",name="keywords",placeholder="keywords")
+                            span.input-group-btn
+                                button.btn.btn-info(type=button) Search
                 div.form-group
-                    label.col-sm-3.control-label Category:
-                    div.col-sm-6
-                        label.checkbox-inline 1
-                            input(type="checkbox")
+                    label.col-sm-3.control-label Contient:
+                    div.col-sm-9#chkMergeGroup1
+                        input(type="hidden",
+                            name="continent",
+                            data-group="#chkMergeGroup1",
+                            data-role="chkMerge",
+                            data-valuetag="checkbox",
+                            data-ref="checked",
+                            data-event="easyLoad",
+                            data-trigger="#section")
+                        each item in continent
+                            label.checkbox-inline= item
+                                input(type="checkbox",value="#{item}")
+            ul.list-group#section(data-role="easyLoad",data-form="#easyLoadForm")

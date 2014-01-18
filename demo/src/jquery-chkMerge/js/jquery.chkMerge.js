@@ -26,7 +26,7 @@
 		/*设置合并value的group*/
 		setGroup: function () {
 			var $group = $(this.options.group);
-			
+			if($group.length == 0) throw new Error('the checkbox group is not defined!');
 			/*如果参数中的group非input元素，则在group中寻找input元素，并设置为group*/
 			if (!$group[0].tagName.match(/^input$/ig)) {
 				switch (this.options.valuetag) {
@@ -95,7 +95,7 @@
 				}
 				case 'checkbox'://如果是input[type="checkbox"]，取它的data-value属性
 				{
-					value = $elem.data('value');
+					value = $elem.data('value') || $elem.val();
 					break;
 				}
 				case 'text'://如果是input[type="text"]，取它的value
@@ -174,7 +174,7 @@
 		valuetag: 'checkbox',//取value的元素类型，可以为text、label、checkbox
 		ref: 'checked',//取所有选中的合并后的value或者未选中的，如果valuetag是text，默认为合并到unchecked中，该项无效
 		event: 'submit',//事件
-		trigger: '',//触发元素
+		trigger: ''//触发元素
 	};
 
 	/* NO CONFLICT

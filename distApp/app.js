@@ -13,9 +13,9 @@ var app = express();
 app.set('port', 8089);
 app.set('views', path.join(__dirname, 'demo/'));
 app.set('view engine', 'jade');
-app.use(express.favicon('favicon.ico'));
+//app.use(express.favicon();
 //app.use(express.logger('dev'));
-//app.use(express.bodyParser());
+app.use(express.bodyParser());
 //app.use(express.methodOverride());
 app.use(express.logger());
 app.use(app.router);
@@ -23,32 +23,39 @@ app.use(express.static('demo/', __dirname, 'demo/'));
 
 var routes = {
 	index: function(req, res){
-
-		res.render('index.jade', params);
-		console.log(__dirname);
+		res.render(params.indexUrl, params);
 	},
 	page: function(req, res){
 		var pageNo = req.params.pageNo;
-		var jsn = {
+		var result = {
 			list: data.list.slice((pageNo - 1) * 5, pageNo * 5),
-			total: data.list.length
+			total: Math.ceil(data.list.length / 5)
 		}
 
-		res.render('template/page.jade', jsn);
+		res.send(result);
 	},
 	addTag: function(req, res){
 		res.send({success: true});
 	},
 	removeTag: function(req, res){
 		res.send({success: true});
+	},
+	renderPage: function(req, res){
+		res.render(params.pageUrl, {list: JSON.parse(req.body.param)});
+	},
+	list: function(req, res){
+		var keywords = res.body.keywords,
+			continent = res.body.continent;
 	}
 };
 
 app.get('/', routes.index);
 // Production
-app.get('/page/:pageNo', routes.page);
-app.post('/addTag', routes.addTag);
-app.post('/removeTag', routes.removeTag);
+app.get('/fetchData/page/:pageNo', routes.page);
+app.post('/fetchData/addTag', routes.addTag);
+app.post('/fetchData/removeTag', routes.removeTag);
+app.post('/fetchData/renderPage', routes.renderPage);
+app.post('/fetchData/list', routes.list);
 
 http.createServer(app).listen(app.get('port'), function(){
   console.log('Express server listening on port ' + app.get('port'));

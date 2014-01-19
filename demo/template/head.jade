@@ -32,13 +32,13 @@ style.
         position: relative;
         top: -60px;
     }
-// build:js sources/js/jquery-1.10.2.min.js
-script(type="text/javascript",src="js/jquery-1.10.2.js")
+// build:js sources/lib/jquery-1.10.2.min.js
+script(type="text/javascript",src="lib/jquery-1.10.2.js")
 // endbuild
-// build:js sources/js/bootstrap.min.js
-script(type="text/javascript",src="js/bootstrap.js")
+// build:js sources/lib/bootstrap.min.js
+script(type="text/javascript",src="lib/bootstrap.js")
 // endbuild
-// build:js sources/js/plugin.min.js
+// build:js sources/lib/plugin.min.js
 each item in plugin
     script(type="text/javascript",src="src/#{item.path}")
 // endbuild

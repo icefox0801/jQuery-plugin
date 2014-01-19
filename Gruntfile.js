@@ -28,7 +28,7 @@ module.exports = function(grunt) {
 				src: ['dist/']
 			},
 			after: {
-				src: ['dist/tmp', 'dist/js']
+				src: ['dist/tmp', 'dist/lib']
 			},
 			app: {
 				src: ['distApp/']
@@ -47,7 +47,7 @@ module.exports = function(grunt) {
 			sources: {
 				expand: true,
 				cwd: 'demo/',
-				src: ['css/bootstrap.min.css','fonts/*','js/bootstrap.min.js','js/jquery-1.10.2.min.js'],
+				src: ['css/bootstrap.min.css','fonts/*','lib/*.min.js'],
 				dest: 'dist/sources/'
 			},
 			favicon: {
@@ -91,7 +91,7 @@ module.exports = function(grunt) {
 					banner: '/*! <%= pkg.name %> - v<%= pkg.version %> - ' + '<%= grunt.template.today("yyyy-mm-dd") %> */'
 				},
 				files: {
-					'dist/sources/js/plugin.min.js': ['dist/tmp/plugin.js']
+					'dist/sources/lib/plugin.min.js': ['dist/tmp/plugin.js']
 				}
 			}
 		},

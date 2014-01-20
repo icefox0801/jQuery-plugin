@@ -6,49 +6,53 @@
  * Date: 2014/01/19
  * Requires: jquery.js
  */
-
-var plugin = {
-
-	define: function(name, options, build){
-
-		// 利用闭包，将name变量保存在内存中，这样当插件Instance类被实例化后，自动获得name属性
-		var Instance =  function() {
-			this.name = name;
-		};
-
-		Instance.prototype = new Plugin(); // 继承
-		Instance.prototype.constructor = Instance;
-
-		$.extend(Instance.prototype, Plugin.prototype);
-
-		return Instance;
-	},
-
-	initConfig: function(options) {
-
-		if(typeof options === 'object') {
-			GLOBAL = $.extend({}, GLOBAL , options)
-		}
-	},
-
-	options: {
-		ajax: 'true',
-		debug: 'true'
+define(['jquery'], function($){
+	var GLOBAL = {
+		debug: true,
+		ajax: true
 	}
-}
-/**
- * Plugin Class
- * @constructor
- */
-var Plugin = function() {
 
-}
+	var plugin = {
 
-Plugin.prototype = {
+		define: function(name, options){
 
-	debug: function (error) {
-		if (window.console && window.console.log) {
-			console.error(this.name + error);
+			// 利用闭包，将name变量保存在内存中，这样当插件Instance类被实例化后，自动获得name属性
+			var Instance =  function() {
+				this.name = name;
+			};
+
+			Instance.prototype = new Plugin(); // 继承
+			Instance.prototype.constructor = Instance;
+
+			// $.extend(Instance.prototype, Plugin.prototype);
+
+			return Instance;
+		},
+
+		initConfig: function(options) {
+
+			if(typeof options === 'object') {
+				GLOBAL = $.extend({}, GLOBAL , options)
+			}
 		}
 	}
-}
+	/**
+	 * Plugin Class
+	 * @constructor
+	 */
+	var Plugin = function() {
+
+	}
+
+	Plugin.prototype = {
+
+		debug: function (error) {
+			if (window.console && window.console.log) {
+				console.error(this.name + error);
+			}
+		}
+	}
+
+	return plugin;
+});
+

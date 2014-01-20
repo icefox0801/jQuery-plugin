@@ -32,13 +32,14 @@ style.
         position: relative;
         top: -60px;
     }
+script(type="text/javascript",src="lib/require.js",data-main="src/main",defer,async="true")
 // build:js sources/lib/jquery-1.10.2.min.js
-script(type="text/javascript",src="lib/jquery-1.10.2.js")
+// script(type="text/javascript",src="lib/jquery-1.10.2.js")
 // endbuild
 // build:js sources/lib/bootstrap.min.js
-script(type="text/javascript",src="lib/bootstrap.js")
+// script(type="text/javascript",src="lib/bootstrap.js")
 // endbuild
 // build:js sources/lib/plugin.min.js
-each item in plugin
-    script(type="text/javascript",src="src/#{item.path}")
+// each item in plugin
+//    script(type="text/javascript",src="src/#{item.path}")
 // endbuild
